@@ -13,7 +13,7 @@ export function DesktopNav({ currentPage, onNavigate }: DesktopNavProps) {
   return (
     <aside className="hidden w-64 flex-col border-r bg-card lg:flex">
       <div className="p-6">
-        <h2 className="text-lg font-semibold">FinTech App</h2>
+        <h2 className="text-lg font-semibold">Payed</h2>
       </div>
       <nav className="flex-1 space-y-1 px-3">
         {menuItems.map((item) => (

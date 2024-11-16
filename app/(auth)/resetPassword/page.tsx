@@ -9,6 +9,8 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useToast } from '@/hooks/use-toast';
 import CustomButton from '@/components/CustomButton';
+import AuthForm from '@/components/auth/auth-form';
+import { Button } from '@/components/ui/button';
 
 const resetPasswordSchema = z.object({
   email: z.string().email('Invalid email address'),
@@ -16,7 +18,7 @@ const resetPasswordSchema = z.object({
 
 type ResetPasswordFormData = z.infer<typeof resetPasswordSchema>;
 
-export function ResetPasswordForm() {
+const ResetPasswordPage = () => {
   const { toast } = useToast();
   const router = useRouter();
 
@@ -46,17 +48,47 @@ export function ResetPasswordForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
-      <div className="space-y-2">
-        <Label htmlFor="email">Email</Label>
-        <Input id="email" type="email" {...register('email')} />
-        {errors.email && (
-          <p className="text-sm text-red-500">{errors.email.message}</p>
-        )}
+    <div className="container flex h-screen w-screen flex-col items-center justify-center">
+      <div className="mx-auto flex w-full flex-col justify-center space-y-6 sm:w-[350px]">
+        <div className="flex flex-col space-y-2 text-center">
+          <h1 className="text-2xl font-semibold tracking-tight">
+            Reset your password
+          </h1>
+
+        </div>
+        <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+
+
+        <div className="space-y-2">
+          <Label htmlFor="email">Email</Label>
+          <Input id="email" type="email" {...register('email')} />
+          {errors.email && (
+            <p className="text-sm text-red-500">{errors.email.message}</p>
+          )}
+        </div>
+
+
+        <CustomButton
+          type="submit"
+          className="w-full hover:bg-red-400"
+          disabled={isSubmitting}
+          isLoading={isSubmitting}
+        >
+          Reset Password
+        </CustomButton>
+      </form>
+
+      <Button
+        type="button"
+        variant="outline"
+        className="w-full"
+        onClick={() => router.back()}
+      >
+        Go back
+      </Button>
       </div>
-      <CustomButton type="submit" isLoading={isSubmitting}>
-        Reset Password
-      </CustomButton>
-    </form>
+    </div>
   );
 }
+
+export default ResetPasswordPage;

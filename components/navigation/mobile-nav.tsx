@@ -26,7 +26,7 @@ export function MobileNav({ currentPage, onNavigate }: MobileNavProps) {
       </SheetTrigger>
       <SheetContent side="left" className="w-64">
         <SheetHeader>
-          <SheetTitle>FinTech App</SheetTitle>
+          <SheetTitle>Payed</SheetTitle>
         </SheetHeader>
         <nav className="mt-4 flex flex-col space-y-1">
           {menuItems.map((item) => (

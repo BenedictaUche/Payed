@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { useRouter } from 'next/navigation'; // Import the router
+import { useRouter } from 'next/navigation';
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
 import * as z from 'zod';
@@ -49,7 +49,7 @@ function AuthForm() {
           title: 'Password reset email sent',
           description: 'Check your email for password reset instructions',
         });
-        router.push('/'); // Redirect to home page
+        router.push('/');
       }
     } catch (error: any) {
       toast({
