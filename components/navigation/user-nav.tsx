@@ -11,22 +11,20 @@ import {
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu'
 
-export function UserNav() {
+export function UserNav({name, user, logout}: any) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="ghost" className="w-full justify-start">
           <User className="mr-2 h-4 w-4" />
-          <span>John Doe</span>
+          <span>{name}</span>
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end">
         <DropdownMenuLabel>My Account</DropdownMenuLabel>
         <DropdownMenuSeparator />
         <DropdownMenuItem>Profile</DropdownMenuItem>
-        <DropdownMenuItem>Billing</DropdownMenuItem>
-        <DropdownMenuItem>Team</DropdownMenuItem>
-        <DropdownMenuItem>Subscription</DropdownMenuItem>
+        <DropdownMenuItem onClick={logout}>Logout</DropdownMenuItem>
       </DropdownMenuContent>
     </DropdownMenu>
   )

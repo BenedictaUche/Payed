@@ -9,6 +9,7 @@ import {
   sendPasswordResetEmail,
 } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
+import { useRouter } from 'next/router'
 
 
 export async function signIn(email: string, password: string) {
@@ -48,8 +49,14 @@ export async function signInWithGoogle() {
   return userCredential
 }
 
-export async function signOut() {
-  return firebaseSignOut(auth)
+export async function signOut(router: any) {
+  try {
+    await firebaseSignOut(auth);
+    router.push("/login");
+  } catch (err) {
+    console.error("Error signing out:", err);
+    alert("An error occurred while signing out. Please try again.");
+  }
 }
 
 // export async function resetPassword(email: string) {
