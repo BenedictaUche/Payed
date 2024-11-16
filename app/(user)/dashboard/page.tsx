@@ -104,7 +104,7 @@ function Dashboard() {
           <div className="mb-8 flex items-center justify-between">
             <div className="flex items-center gap-4">
               <MobileNav currentPage={currentPage} onNavigate={handleNavigate} />
-              <h1 className="text-3xl font-bold">{currentPage}</h1>
+              <h1 className="text-3xl font-bold">Welcome back, {name}</h1>
             </div>
             <div className="flex items-center gap-4">
                 <Button className='hover:bg-red-300'>

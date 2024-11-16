@@ -16,14 +16,14 @@ export function DesktopNav({ currentPage, onNavigate, name, user, logout }: Desk
   return (
     <aside className="hidden w-64 flex-col border-r bg-card lg:flex">
       <div className="p-6">
-        <h2 className="text-lg font-semibold">Payed</h2>
+        <h2 className="text-2xl text-center font-semibold italic tracking-wide">Payed</h2>
       </div>
-      <nav className="flex-1 space-y-1 px-3">
+      <nav className="flex-1 space-y-5 px-3">
         {menuItems.map((item) => (
           <Button
             key={item.name}
             variant={currentPage === item.name ? 'secondary' : 'ghost'}
-            className="w-full justify-start"
+            className="w-full justify-start text-lg"
             onClick={() => onNavigate(item)}
           >
             <item.icon className="mr-2 h-4 w-4" />

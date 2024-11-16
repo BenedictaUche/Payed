@@ -10,10 +10,18 @@ import {
 } from 'firebase/auth'
 import { doc, setDoc } from 'firebase/firestore'
 import { useRouter } from 'next/router'
+import { setPersistence, browserLocalPersistence } from "firebase/auth";
+import Confirm from '@/components/Confirm'
 
 
 export async function signIn(email: string, password: string) {
-  return signInWithEmailAndPassword(auth, email, password)
+  try {
+    await setPersistence(auth, browserLocalPersistence);
+    return await signInWithEmailAndPassword(auth, email, password);
+  } catch (error) {
+    console.log("Error setting persistence:", error);
+    throw error;
+  }
 }
 
 export async function signUp(email: string, password: string, name: string) {
@@ -50,6 +58,9 @@ export async function signInWithGoogle() {
 }
 
 export async function signOut(router: any) {
+  const confirmed = await confirm("Are you sure you want to log out?");
+  if (!confirmed) return;
+
   try {
     await firebaseSignOut(auth);
     router.push("/login");

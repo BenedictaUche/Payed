@@ -120,6 +120,30 @@ src/
     └── globals.css
 ```
 
+```
+users (collection)
+  -> {userId} (document)
+      -> deposits (collection)
+         -> {depositId} (document)
+            - amount: 1000
+            - timestamp: 2024-11-16T00:00:00Z
+      -> savings (collection)
+         -> {savingId} (document)
+            - amount: 5000
+            - interestRate: 5.2
+            - timestamp: 2024-10-01T00:00:00Z
+      -> investments (collection)
+         -> {investmentId} (document)
+            - amount: 3000
+            - returnRate: 2.3
+            - timestamp: 2024-09-20T00:00:00Z
+      -> loans (collection)
+         -> {loanId} (document)
+            - amount: 2000
+            - interestRate: 1.8
+            - timestamp: 2024-08-05T00:00:00Z
+```
+
 ## Security
 
 - All sensitive data is encrypted
